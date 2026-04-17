@@ -41,8 +41,9 @@
 
 
 
-// *************** SPI1 IMU0 ICM42688 **************
+// *************** SPI1 IMU1 ICM42688 **************
 #define USE_IMU_ICM42688
+#define USE_IMU_ICM42605
 
 #define USE_SPI
 
@@ -55,7 +56,7 @@
 #define ICM42688_SPI_BUS        BUS_SPI1
 #define ICM42688_CS_PIN         PC15
 
-// *************** SPI4 IMU1 ICM42688 **************
+// *************** SPI4 IMU2 ICM42688 **************
 #define USE_SPI_DEVICE_4
 #define SPI4_SCK_PIN            PE12
 #define SPI4_MISO_PIN           PE13
