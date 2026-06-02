@@ -36,6 +36,7 @@
 #define SPI1_MISO_PIN   	    PB4
 #define SPI1_MOSI_PIN   	    PA7
 
+// ICM42688P uses the ICM42605-compatible driver.
 #define USE_IMU_ICM42605
 #define IMU_ICM42605_ALIGN      CW90_DEG_FLIP
 #define ICM42605_SPI_BUS        BUS_SPI1
