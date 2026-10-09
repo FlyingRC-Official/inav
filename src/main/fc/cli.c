@@ -2970,7 +2970,7 @@ static void cliFlashErase(char *cmdline)
         delay(100);
     }
 
-    cliPrintLine("Done.");
+    cliPrintLine(flashGetGeometry()->totalSize ? "Done." : "Flash erase failed; reboot required.");
 }
 
 #ifdef USE_FLASH_TOOLS
