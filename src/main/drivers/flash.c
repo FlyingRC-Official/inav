@@ -29,6 +29,7 @@
 #ifdef USE_FLASHFS
 
 #include "flash.h"
+#include "flash_at32_internal.h"
 #include "flash_m25p16.h"
 #include "flash_w25n.h"
 
@@ -39,6 +40,20 @@
 #include "drivers/time.h"
 
 static flashDriver_t flashDrivers[] = {
+#ifdef USE_FLASH_AT32_INTERNAL
+    {
+        .init = at32InternalFlashInit,
+        .isReady = at32InternalFlashIsReady,
+        .waitForReady = at32InternalFlashWaitForReady,
+        .eraseSector = at32InternalFlashEraseSector,
+        .eraseCompletely = at32InternalFlashEraseCompletely,
+        .pageProgram = at32InternalFlashPageProgram,
+        .readBytes = at32InternalFlashReadBytes,
+        .getGeometry = at32InternalFlashGetGeometry,
+        .flush = NULL
+    },
+#endif
+
 
 #ifdef USE_SPI
 
@@ -129,7 +144,9 @@ int flashReadBytes(uint32_t address, uint8_t *buffer, int length)
 
 void flashFlush(void)
 {
-    flash->flush();
+    if (flash->flush) {
+        flash->flush();
+    }
 }
 
 const flashGeometry_t *flashGetGeometry(void)

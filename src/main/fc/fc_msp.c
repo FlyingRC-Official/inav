@@ -3064,7 +3064,7 @@ static mspResult_e mspFcProcessInCommand(uint16_t cmdMSP, sbuf_t *src)
 
 #ifdef USE_FLASHFS
     case MSP_DATAFLASH_ERASE:
-        if (blackboxMayEditConfig()) {
+        if (blackboxMayEditConfig() && !ARMING_FLAG(ARMED)) {
             flashfsEraseCompletely();
         } else {
             return MSP_RESULT_ERROR;

@@ -178,6 +178,8 @@ main_sources(COMMON_SRC
     drivers/exti.c
     drivers/exti.h
     drivers/flash.c
+    drivers/flash_at32_internal.c
+    drivers/flash_at32_internal.h
     drivers/flash.h
     drivers/flash_m25p16.c
     drivers/flash_m25p16.h
