@@ -217,11 +217,13 @@ jobs:
         with:
           name: ${{ env.BUILD_NAME }}
           path: binaries/*.hex
+          retention-days: 3
       - name: Upload firmware images
         uses: actions/upload-artifact@v4
         with:
           name: targets
           path: targets.txt
+          retention-days: 1
       - name: Save PR number
         if: github.event_name == 'pull_request'
         run: echo "${{ github.event.pull_request.number }}" > pr_number.txt
@@ -309,6 +311,7 @@ jobs:
         with:
           name: ${{ env.BUILD_NAME }}_SITL-Linux-aarch64
           path: ./build_SITL/*_SITL
+          retention-days: 1
 
   build-SITL-Linux:
     runs-on: ubuntu-latest
@@ -345,6 +348,7 @@ jobs:
         with:
           name: ${{ env.BUILD_NAME }}_SITL-Linux
           path: ./build_SITL/*_SITL
+          retention-days: 1
 
   build-SITL-Mac:
     runs-on: macos-latest
@@ -386,6 +390,7 @@ jobs:
         with:
           name: ${{ env.BUILD_NAME }}_SITL-MacOS
           path: ./build_SITL/*_SITL
+          retention-days: 1
 
   build-SITL-Windows:
     runs-on: windows-latest
@@ -431,6 +436,7 @@ jobs:
           path: |
             ./build_SITL/*.exe
             ./build_SITL/cygwin1.dll
+          retention-days: 1
 
   test:
     #needs: [build]
